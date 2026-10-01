@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+        <style>
+        body{
+          font-family:'segoe UI',Tahoma,geneva,vardana,sans-sarif;
+        }
+        .btn{
+            background-color: rgb(47, 177, 216) ;
+        }
+        .ipt{
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Signup</h1>
+    <form action="/user" method="post">
+        <label>Full Name</label>
+        <input class="ipt" type="text" placeholder="enter your name" name="name"/>
+                <label>Email</label>
+        <input class="ipt" type="text" placeholder="enter your email" name="email"/>
+                <label>password</label>
+        <input class="ipt" type="password" placeholder="enter your password" name="password"/>
+        <input class="btn" type="submit" value="Signup"/>
+
+    </form>
+</body>
+</html>

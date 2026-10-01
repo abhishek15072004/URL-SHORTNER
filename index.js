@@ -1,9 +1,16 @@
 const express=require("express");
 const path =require('path');
 const {connecttomongodb}=require("./connect.js");
+const {restrictloggedinuseronly}=require('./middlewares/auth.js');
+const URL=require('./models/url.js');
+const cookieparser=require('cookie-parser');
+
+// Routes
 const urlroutes=require("./routes/url");
 const staticroute=require('./routes/staticrouters')
-const URL=require('./models/url.js');
+const userroute=require('./routes/user.js')
+
+
 const app=express();
 const port=8005;
 
@@ -15,12 +22,13 @@ app.set("views",path.resolve("./views"));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-
+app.use(cookieparser());
 app.use(express.static("public"));
 
 
+app.use("/url",restrictloggedinuseronly, urlroutes);
 app.use('/',staticroute);
-app.use("/url",urlroutes);
+app.use("/user",userroute);
 
 
 
